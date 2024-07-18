@@ -27,12 +27,13 @@ require_once "kadai02_resource.php";
 
 // var_dump($_COOKIE["php1_kadai02"]);
 
-$cookieID = $_COOKIE["php1_kadai02"];
 $productHistory = [];
 if(!empty($_COOKIE["php1_kadai02"])){
   $productHistory = $_COOKIE["php1_kadai02"];
   $productHistory = explode(",", $productHistory);
-  // var_dump($productHistory);
+  
+} else {
+  $productHistory = [];
 }
 
 

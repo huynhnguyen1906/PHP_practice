@@ -143,22 +143,17 @@ try {
                                   </tr>
                               </thead>
                               <tbody>
-                                  <?php foreach($products as $key=> $product): ?>
+                                  <?php foreach ($products as $value) : ?>
                                   <tr class="tracking-wider border-b border-gray-200 hover:bg-gray-100 ">
-                                      <td class="h-10 px-6 py-5">
-                                          <?php echo $product -> code ?>
-                                      </td>
-                                      <td class="h-10 px-6 py-5">
-                                          <?php echo $product -> name ?>
-                                      </td>
-                                      <td class="h-10 px-6 py-5">
-                                          <?php echo $product -> price ?>
-                                      </td>
+                                      <td class="h-10 px-6 py-5"><?= $value->code ?></td>
+                                      <td class="h-10 px-6 py-5"><?= $value->name ?></td>
+                                      <td class="h-10 px-6 py-5"><?= $value->price ?></td>
                                       <td class="h-10 text-center px-6 py-5">
-                                          <a href="#" class="text-pink-600 hover:text-pink-400">詳細</a>
+                                          <a href="kadai07_1.php?product_code=<?= $value->code ?>"
+                                              class="text-pink-600 hover:text-pink-400">詳細</a>
                                       </td>
                                   </tr>
-                                  <?php endforeach; ?>
+                                  <?php endforeach ?>
                               </tbody>
                           </table>
                       </div>

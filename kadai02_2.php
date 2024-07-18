@@ -2,56 +2,45 @@
 
 require_once "kadai02_resource.php";
 
-//ID
-
-if( empty($_GET["id"]) ){
-  header(" location: kadai02_1.php ");
-  exit;
+// ID
+if (empty($_GET["id"])) {
+    header("location: kadai02_1.php");
+    exit;
 }
 
-//該当商品の情報を取得
-
+// 該当商品の情報を取得
 $productID = $_GET["id"];
 
 // var_dump($requestData);
 
-foreach( $products as $product ){
-  if( $product["id"] == $productID ){
-    break;
-  }
+foreach ($products as $product) {
+    if ($product["id"] == $productID) {
+        break;
+    }
 }
 
-
-//IDと一致する商品がない場合
-// if( empty($temp)){
-//   header(" location: kadai02_1.php ");
-//   exit;
+// IDと一致する商品がない場合
+// if (empty($temp)) {
+//     header("location: kadai02_1.php");
+//     exit;
 // }
 
-//cookieへ閲覧済みの商品の内容を更新
-if(!empty($_COOKIE["php1_kadai02"])){
-  $productHistory = $_COOKIE["php1_kadai02"];
+// cookieへ閲覧済みの商品の内容を更新
+if (!empty($_COOKIE["php1_kadai02"])) {
+    $productHistory = $_COOKIE["php1_kadai02"];
+    $productHistory = preg_split("/,/", $productHistory);
 
-  //$productHistory = explode(",", $productHistory);
-  $productHistory = preg_split(" /,/ ", $productHistory);
-  $productHistory[] = $productID;
-  $historyCount = count($productHistory);
-
-  //$temp = implode( "," , $productHistory );
-  $temp = "";
-  for( $i = 0; $i < $historyCount; $i++ ){
-    $temp .= $productHistory[$i];
-    if( $i < $historyCount - 1 ){
-      $temp .= ",";  
+    if (!in_array($productID, $productHistory)) {
+        $productHistory[] = $productID;
     }
-  }
-  $productHistory = $temp;  
+
+    $productHistory = implode(",", $productHistory);
+} else {
+    $productHistory = $productID;
 }
-else{
-  $productHistory = $productID;
-}
-//cookie
-setcookie("php1_kadai02", $productHistory, time()+ (60) );
+
+// cookie
+setcookie("php1_kadai02", $productHistory, time() + 60);
 // var_dump($productHistory);
 
 

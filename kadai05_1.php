@@ -1,5 +1,6 @@
 <?php
-
+// 外部ファイルの読み込み
+require_once "utility.php";
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +35,6 @@
 
                 <form action="kadai05_2.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                    <!--/1MB == 1,000,000B-->
 
                     <div
                         class="flex flex-col-reverse lg:flex-row items-center h-full lg:h-96 mb-10 p-4 border border-gray-400 border-dashed">
