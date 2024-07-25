@@ -5,6 +5,18 @@ require_once __DIR__ . "/utility.php";
 
 $message = "";
 
+if( $_SERVER[ "REQUEST_METHOD" ] !== "POST" ){
+    redirect( "kadai06_1.php" );
+}
+
+//類似メソッドがある かと DELETE METHOD かチェック
+$_method = filter_input(INPUT_POST , "_method");
+if( ! $_method || $_method !== "DELETE" ){
+    redirect( "kadai06_1.php" );
+}
+
+var_dump($_POST);
+
 $productCode = filter_input(INPUT_GET, "product_code");
 var_dump($productCode);
 try {
